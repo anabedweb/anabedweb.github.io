@@ -2,39 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Anabel Bedlan</title>
 
   <link rel="stylesheet" href="styles.css" />
   
 </head>
 <body>
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
 <div class="layout">
 
-<!-- Hamburger -->
-<button id="sidebar-toggle">☰</button>
+  <!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="logo">~/portfolio</div>
+    <ul class="tree">
+      <li class="folder open">
+        <div class="folder-label">root</div>
+        <ul>
+          <li class="file active" data-section="about">about.txt</li>
+          <li class="file" data-section="projects">projects-and-work.md</li>
+          <li class="file" data-section="portfolio">portfolio.md</li>
+          <li class="file" data-section="resume">resume.pdf</li>
+          <li class="file" data-section="linkedin">linkedin.html</li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
 
-<!-- Sidebar -->
-<aside id="sidebar">
-  <div class="logo">~/portfolio</div>
-  <ul class="tree">
-    <li class="folder open">
-      <div class="folder-label">root</div>
-      <ul>
-        <li class="file active" data-section="about">about.txt</li>
-        <li class="file" data-section="projects">projects-and-work.md</li>
-        <li class="file" data-section="portfolio">portfolio.md</li>
-        <li class="file" data-section="resume">resume.pdf</li>
-        <li class="file" data-section="linkedin">linkedin</li>
-      </ul>
-    </li>
-  </ul>
-</aside>
-
-
-<!-- Main content -->
+  <!-- Main -->
   <main class="main" id="main">
-    <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
     <!-- tabs -->
     <div class="tabs">
       <div class="tab active" data-section="about">about.txt</div>
@@ -52,14 +48,30 @@
       <!-- ABOUT -->
       <section id="about" class="section visible" data-name="about.txt">
         <pre class="prompt"><span class="path">anabel-bedlan@portfolio:</span><span class="tilde">~</span>$ cat about.txt</pre>
-        <p>Hello — I’m <strong>Anabel Bedlan</strong>, and I am a first-year Computer Science student at Western Washington University</p>
-        <p>with a passion for all things computer science. As I continue my education, I’m eager to expand my knowledge with hands-on</p>
-        <p>experience in software development and related fields. I’m excited to connect with like-minded individuals and explore</p>
-        <p>opportunities that will allow me to grow both personally and professionally.</p>
-        <p>                                                                                       </p>
-        <p>In my free time, I enjoy participating in hackathons, Capture The Flag (CTF) challenges, and working on personal projects.</p>
-        <p>I'm always looking for new challenges and ways to improve my skills.</p>
-        <p></p>
+                <header class="hero">
+<h1 class="hero-name">Anabel Bedlan</h1>
+<h2 class="hero-subtitle">Computer Science Student • Machine Learning Researcher</h2>
+<div class="hero-sections">
+<div class="about-blurb">
+<h3>About Me</h3>
+<p>My name is Anabel Bedlan and I am a first-year Computer Science student at Western Washington University with a passion for all things computer science. As I continue my education, I’m eager to expand my knowledge with hands-on experience in the tech industry. I am particularly interested in software development, cybersecurity, and any other tech-related fields that allow me to grow my expertise and contribute to meaningful projects.
+
+At WWU, I am involved in multiple organizations, as I am a member of the Computer Science Distinguished Scholars program, as well as an active member of the Associated Computing Machinery Club and the Competitive Programming Club. Three these activities I have been able to collaborate with peers and improve upon my technical skills.
+
+Outside of school, I have gained incredibly valuable experience through my time working as a programmer on Pierce College science Dome’s 2023 NASA Space Grant project, along with working as a system programmer and ambassador for the Dome. Through these roles, I gained the ability to quickly learn new programming languages, work under tight deadlines, and collaborate with a team to achieve project goals. 
+
+Outside of both school and work experience, I enjoy participating in hackathons, Capture The Flag (CTF) challenges, and working on personal projects in my free time.
+
+I have significant experience with Java, C#, C++, JavaScript, Python, and HTML, and have worked with R, Go, and Swift. I also have experience in video game development, web development, app development, and various cybersecurity skills.
+
+I am actively seeking internship opportunities where I can apply my skills, learn from experienced professionals, and contribute to real-world projects. My goal is to gain practical experience, deepen my technical knowledge, and make meaningful contributions to the tech community.</p>
+</div>
+<div class="contact-blurb">
+<h3>Contact</h3>
+<p>Email: bedlana@wwu.edu<br>LinkedIn: linkedin.com/in/anabel-bedlan<br>GitHub: github.com/anabedweb</p>
+</div>
+</div>
+</header>
       </section>
 
       <!-- PROJECTS & WORK -->
