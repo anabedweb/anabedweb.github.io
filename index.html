@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Terminal / IDE Portfolio</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">~/portfolio</div>
+    <ul class="tree">
+      <li class="folder open">
+        <div class="folder-label">root</div>
+        <ul>
+          <li class="file active" data-section="about">about.txt</li>
+          <li class="file" data-section="projects">projects-and-work.md</li>
+          <li class="file" data-section="portfolio">portfolio.md</li>
+          <li class="file" data-section="resume">resume.pdf</li>
+          <li class="file" data-section="linkedin">linkedin.html</li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main -->
+  <main class="main" id="main">
+    <!-- tabs -->
+    <div class="tabs">
+      <div class="tab active" data-section="about">about.txt</div>
+    </div>
+
+    <!-- terminal header -->
+    <div class="terminal-bar">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+
+    <div class="terminal">
+
+      <!-- ABOUT -->
+      <section id="about" class="section visible" data-name="about.txt">
+        <pre class="prompt"><span class="path">anabel-bedlan@portfolio:</span><span class="tilde">~</span>$ cat about.txt</pre>
+        <p>Hello — I’m <strong>Anabel Bedlan</strong>, and I am a first-year Computer Science student at Western Washington University</p>
+        <p>with a passion for all things computer science. As I continue my education, I’m eager to expand my knowledge with hands-on</p>
+        <p>experience in software development and related fields. I’m excited to connect with like-minded individuals and explore</p>
+        <p>opportunities that will allow me to grow both personally and professionally.</p>
+        <p>                                                                                       </p>
+        <p>In my free time, I enjoy participating in hackathons, Capture The Flag (CTF) challenges, and working on personal projects.</p>
+        <p>I'm always looking for new challenges and ways to improve my skills.</p>
+        <p></p>
+      </section>
+
+      <!-- PROJECTS & WORK -->
+      <section id="projects" class="section" data-name="projects-and-work.md">
+        <pre class="prompt"><span class="path">anabel-bedlan@portfolio:</span><span class="tilde">~/projects</span>$ cat projects-and-work.md</pre>
+<pre class="codeblock">
+# Projects & Work
+</pre>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio" class="section" data-name="portfolio.md">
+        <pre class="prompt"><span class="path">anabel-bedlan@portfolio:</span><span class="tilde">~/portfolio</span>$ cat portfolio.md</pre>
+<pre class="portfolio-grid">
+Project: 
+ • Role: 
+ • Tech: 
+</pre>
+      </section>
+
+      <!-- RESUME -->
+      <section id="resume" class="section" data-name="resume.pdf">
+        <pre class="prompt"><span class="path">anabel-bedlan@portfolio:</span><span class="tilde">~/</span>$ open resume.pdf</pre>
+        <div class="resume-panel">
+          <div class="resume-actions">
+            <a class="btn" href="resume.pdf" download>Download resume.pdf</a>
+            <button id="open-in-new" class="btn-ghost">Open in new tab</button>
+          </div>
+          <div class="resume-viewer">
+            <iframe src="resume.pdf#view=FitH" title="Resume PDF"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- LINKEDIN -->
+      <section id="linkedin" class="section" data-name="linkedin.html">
+        <pre class="prompt"><span class="path">anabel-bedlan@portfolio:</span><span class="tilde">~/</span>$ open linkedin</pre>
+
+        <!-- LinkedIn Public Badge Embed -->
+        <div class="linkedin-badge">
+          <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+          <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="anabel-bedlan" data-version="v1">
+            <!--<a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/anabel-bedlan?trk=profile-badge">Anabel Bedlan</a>-->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

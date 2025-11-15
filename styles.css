@@ -1,0 +1,101 @@
+/* -----------------------
+   Light earth-tone theme
+   Minimal terminal/IDE look
+   ----------------------- */
+
+:root{
+  --bg: #f6f1e4;
+  --sidebar-bg: #e9e4d6;
+  --panel-bg: #f1ebde;
+  --accent: #8aa67b;
+  --muted: #bfb6a3;
+  --text: #3b3a35;
+  --border: #d7d2c7;
+  --mono: ui-monospace, "Fira Code", "JetBrains Mono", monospace;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow:hidden;
+}
+
+/* layout */
+.layout{display:flex;height:100vh}
+.sidebar{
+  width:260px;background:var(--sidebar-bg);border-right:1px solid var(--border);
+  padding:20px;display:flex;flex-direction:column;gap:10px;overflow:auto;
+}
+.logo{font-weight:700;color:var(--accent);font-size:1.1rem;margin-bottom:8px}
+.tree{list-style:none;padding:0;margin:0}
+.folder-label{font-weight:700;color:var(--accent);cursor:pointer;margin-bottom:6px}
+.folder > ul{padding-left:14px;display:none}
+.folder.open > ul{display:block}
+.file{padding:6px 4px;cursor:pointer;border-radius:4px;color:var(--text)}
+.file:hover{background:rgba(0,0,0,0.02)}
+.file.active{background:linear-gradient(90deg,#f7f5ef,#f1ebde);font-weight:700;color:var(--accent)}
+
+/* sidebar foot */
+.sidebar-foot{margin-top:auto;font-size:0.85rem;color:var(--muted)}
+
+/* main area */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.tabs{display:flex;height:42px;align-items:flex-end;border-bottom:1px solid var(--border);background:var(--panel-bg);padding:0 10px;gap:6px}
+.tab{padding:8px 12px;border-right:1px solid var(--border);cursor:pointer;background:var(--panel-bg);color:var(--text)}
+.tab.active{background:var(--bg);color:var(--accent);border-top:2px solid var(--accent);font-weight:700}
+
+/* terminal header dots */
+.terminal-bar{height:18px;background:var(--panel-bg);display:flex;gap:8px;align-items:center;padding:6px 12px;border-bottom:1px solid var(--border)}
+.dot{width:11px;height:11px;border-radius:50%}
+.red{background:#e57373}.yellow{background:#f5dd76}.green{background:#8bc98b}
+
+/* terminal window */
+.terminal{flex:1;overflow:auto;padding:20px;background:var(--panel-bg)}
+.section{display:none}
+.section.visible{display:block;animation:fadeIn .18s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* prompt and code */
+.prompt{font-weight:700;margin:0 0 10px}
+.path{color:var(--accent)}
+.tilde{color:var(--text)}
+
+.codeblock, .portfolio-grid, pre{
+  background:var(--sidebar-bg);border:1px solid var(--border);padding:12px;border-radius:6px;white-space:pre-wrap;font-size:0.95rem;
+}
+
+/* resume panel */
+.resume-panel{display:flex;flex-direction:column;gap:12px}
+.resume-actions{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.btn{background:var(--accent);color:white;border:none;padding:8px 10px;border-radius:6px;cursor:pointer;font-weight:700}
+.btn-ghost{background:transparent;border:1px solid var(--border);padding:8px 10px;border-radius:6px;cursor:pointer}
+.resume-viewer{height:66vh;border:1px solid var(--border);border-radius:6px;overflow:hidden;background:white}
+.resume-viewer iframe{width:100%;height:100%;border:0}
+
+/* linkedin panel */
+.linkedin-panel{display:flex;flex-direction:column;gap:12px}
+.linkedin-actions{display:flex;gap:10px;align-items:center}
+#linkedin-url{flex:1;padding:8px;border-radius:6px;border:1px solid var(--border);background:white}
+.linkedin-embed{border:1px solid var(--border);padding:12px;border-radius:6px;background:var(--sidebar-bg)}
+.linkedin-embed iframe{width:100%;height:48vh;border:0;border-radius:4px}
+.linkedin-fallback{display:block}
+.hidden{display:none}
+
+
+/* small profile preview card */
+.profile-card{display:flex;gap:12px;align-items:center;padding:8px;border-radius:6px;background:white;border:1px solid var(--border)}
+.profile-card img{width:84px;height:84px;border-radius:8px;object-fit:cover}
+.profile-card h3{margin:0;font-size:1.05rem}
+.muted{color:var(--muted)}
+.small{font-size:0.85rem}
+
+/* responsive tweaks */
+@media (max-width:880px){
+  .sidebar{display:none}
+  .tabs{padding-left:8px}
+}
