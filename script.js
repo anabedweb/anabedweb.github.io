@@ -164,3 +164,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// Sidebar toggle button
+
+const sidebarToggle = document.getElementById('sidebar-toggle');
+
+const sidebar = document.querySelector('.sidebar');
+
+
+
+sidebarToggle.addEventListener('click', () => {
+
+    sidebar.classList.toggle('open');
+
+});
+
+
+
+// Optional: close sidebar when clicking a file (mobile)
+
+document.querySelectorAll('.file').forEach(f => {
+
+    f.addEventListener('click', () => {
+
+        if (window.innerWidth <= 880) {
+
+            sidebar.classList.remove('open');
+
+        }
+
+    });
+
+});

@@ -86,7 +86,6 @@ body{
 .linkedin-fallback{display:block}
 .hidden{display:none}
 
-
 /* small profile preview card */
 .profile-card{display:flex;gap:12px;align-items:center;padding:8px;border-radius:6px;background:white;border:1px solid var(--border)}
 .profile-card img{width:84px;height:84px;border-radius:8px;object-fit:cover}
@@ -98,4 +97,92 @@ body{
 @media (max-width:880px){
   .sidebar{display:none}
   .tabs{padding-left:8px}
+}
+
+/* Hamburger button */
+
+.sidebar-toggle {
+
+    display: none;
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 12px;
+
+    background: var(--accent);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 4px;
+
+    padding: 6px 10px;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    z-index: 1000;
+
+}
+
+
+
+/* Mobile styles */
+
+@media (max-width: 880px) {
+
+    .sidebar {
+
+        position: fixed;
+
+        left: -260px;   /* hide sidebar by default */
+
+        top: 0;
+
+        height: 100%;
+
+        z-index: 999;
+
+        transition: left 0.25s ease;
+
+    }
+
+
+
+    .sidebar.open {
+
+        left: 0;
+
+    }
+
+
+
+    .sidebar-toggle {
+
+        display: block;
+
+    }
+
+
+
+    .main {
+
+        flex: 1;
+
+        overflow: auto;
+
+    }
+
+
+
+    .tabs {
+
+        overflow-x: auto;
+
+    }
+
 }
