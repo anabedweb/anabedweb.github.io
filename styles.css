@@ -99,90 +99,63 @@ body{
   .tabs{padding-left:8px}
 }
 
-/* Hamburger button */
-
-.sidebar-toggle {
-
-    display: none;
-
-    position: absolute;
-
-    top: 12px;
-
-    left: 12px;
-
-    background: var(--accent);
-
-    color: white;
-
-    border: none;
-
-    border-radius: 4px;
-
-    padding: 6px 10px;
-
-    font-size: 1.2rem;
-
-    cursor: pointer;
-
-    z-index: 1000;
-
+/* General layout */
+body {
+  margin: 0;
+  font-family: monospace;
 }
 
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background: #f0e6d2; /* light earth tone */
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  transition: transform 0.25s ease;
+  transform: translateX(0); /* visible by default */
+  z-index: 1000;
+}
 
+/* Hidden on mobile/small windows */
+@media (max-width: 880px) {
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
 
-/* Mobile styles */
+  /* Hamburger button */
+  #sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1100;
+    background: #b79f76;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+}
+
+#sidebar-toggle {
+  display: none; /* hidden on desktop */
+}
+
+/* Main content */
+#main {
+  margin-left: 260px;
+  padding: 20px;
+}
 
 @media (max-width: 880px) {
-
-    .sidebar {
-
-        position: fixed;
-
-        left: -260px;   /* hide sidebar by default */
-
-        top: 0;
-
-        height: 100%;
-
-        z-index: 999;
-
-        transition: left 0.25s ease;
-
-    }
-
-
-
-    .sidebar.open {
-
-        left: 0;
-
-    }
-
-
-
-    .sidebar-toggle {
-
-        display: block;
-
-    }
-
-
-
-    .main {
-
-        flex: 1;
-
-        overflow: auto;
-
-    }
-
-
-
-    .tabs {
-
-        overflow-x: auto;
-
-    }
-
+  #main {
+    margin-left: 0;
+  }
 }
