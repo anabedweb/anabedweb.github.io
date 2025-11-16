@@ -1,22 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   const files = document.querySelectorAll('.file');
   const tabs = document.querySelector('.tabs');
   const sections = document.querySelectorAll('.section');
   const main = document.getElementById('main');
-
-  // -----------------------
-  // MOBILE SIDEBAR TOGGLE
-  // -----------------------
   const sidebar = document.getElementById('sidebar');
   const mobileToggle = document.getElementById('mobileToggle');
 
+  // MOBILE TOGGLE
   if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
       sidebar.classList.toggle('open');
     });
   }
 
-  // Utility: show a section and manage tabs + active file
   function openSection(sectionId, addTab = true) {
     sections.forEach(s => s.classList.remove('visible'));
     const target = document.getElementById(sectionId);
@@ -24,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     target.classList.add('visible');
     target.scrollTop = 0;
 
+    // Highlight sidebar selected file
     files.forEach(f => f.classList.remove('active'));
     const sidebarFile = document.querySelector(`.file[data-section="${sectionId}"]`);
     if (sidebarFile) sidebarFile.classList.add('active');
 
-    let existingTab = document.querySelector(`.tab[data-section="${sectionId}"]`);
+    // Tabs
+    const existingTab = document.querySelector(`.tab[data-section="${sectionId}"]`);
     if (addTab && !existingTab) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       const tab = document.createElement('div');
@@ -42,24 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
       existingTab.classList.add('active');
     }
 
+    sidebar.classList.remove('open');
     main.focus();
   }
 
-  // CLICK HANDLERS FOR FILES (corrected)
   files.forEach(f => {
-    f.addEventListener('click', () => {
-      openSection(f.dataset.section);
-      sidebar.classList.remove('open'); // close sidebar on mobile
-    });
-
-    f.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') openSection(f.dataset.section);
-    });
+    f.addEventListener('click', () => openSection(f.dataset.section));
   });
 
+  // Default
   openSection('about', false);
 
-  // Resume button
+  // Resume open button
   const openBtn = document.getElementById('open-in-new');
   if (openBtn) {
     openBtn.addEventListener('click', () => {
@@ -67,79 +60,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // LinkedIn Embed Logic
-  const loadBtn = document.getElementById('load-linkedin');
-  const urlInput = document.getElementById('linkedin-url');
-  const iframe = document.getElementById('linkedin-iframe');
-  const fallback = document.getElementById('linkedin-fallback');
-  const linkAnchor = document.getElementById('linkedin-link');
-  const fallbackLinkAnchor = document.getElementById('fallback-link');
-
-  function showFallback(url) {
-    iframe.classList.add('hidden');
-    fallback.classList.remove('hidden');
-    if (linkAnchor) {
-      linkAnchor.href = url || '#';
-      linkAnchor.textContent = url ? 'Open on LinkedIn' : 'Open LinkedIn';
-    }
-    if (fallbackLinkAnchor) {
-      fallbackLinkAnchor.href = url || '#';
-      fallbackLinkAnchor.target = '_blank';
-      fallbackLinkAnchor.rel = 'noopener';
-    }
-  }
-
-  function attemptEmbed(url) {
-    fallback.classList.add('hidden');
-    iframe.classList.remove('hidden');
-    iframe.src = url;
-
-    let loaded = false;
-    const to = setTimeout(() => {
-      if (!loaded) showFallback(url);
-    }, 1400);
-
-    iframe.onload = function () {
-      loaded = true;
-      clearTimeout(to);
-      try {
-        const loc = iframe.contentWindow.location.href;
-        if (!loc || loc === 'about:blank') showFallback(url);
-      } catch {
-        showFallback(url);
-      }
-    };
-  }
-
-  if (loadBtn) {
-    loadBtn.addEventListener('click', () => {
-      const raw = urlInput.value.trim();
-      if (!raw) {
-        alert('Paste your full LinkedIn profile URL');
-        return;
-      }
-      let url = raw;
-      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
-      if (linkAnchor) linkAnchor.href = url;
-      attemptEmbed(url);
-    });
-
-    urlInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') loadBtn.click();
-    });
-  }
-
   // Close tabs on double-click
   tabs.addEventListener('dblclick', (e) => {
     const t = e.target.closest('.tab');
     if (!t) return;
-    const sectionId = t.dataset.section;
+    const sid = t.dataset.section;
     t.remove();
-    if (t.classList.contains('active')) {
-      const firstTab = document.querySelector('.tab');
-      if (firstTab) openSection(firstTab.dataset.section, false);
-      else openSection('about', false);
-    }
+    const first = document.querySelector('.tab');
+    if (first) openSection(first.dataset.section, false);
+    else openSection('about', false);
   });
-
 });
+
+// TYPEWRITER EFFECT FOR NAME
+const typewriterSpan = document.getElementById("typewriter");
+if (typewriterSpan) {
+  const text = typewriterSpan.getAttribute("data-text");
+  let i = 0;
+
+  function typeLetter() {
+    if (i < text.length) {
+      typewriterSpan.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeLetter, 120); // typing speed
+    }
+  }
+
+  typeLetter();
+}
