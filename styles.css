@@ -96,3 +96,13 @@ color:#D18E97;
     display: none;
   }
 }
+
+.simple-link {
+  display: none; /* hidden by default (desktop) */
+}
+
+@media (max-width: 880px) {
+  .simple-link {
+    display: inline-block; /* visible only on mobile */
+  }
+}
