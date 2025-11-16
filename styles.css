@@ -336,3 +336,21 @@ pre{
   white-space: nowrap;
   overflow: hidden;
 }
+
+.work-item, .project-item {
+  margin-bottom: 22px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  border-radius: 6px;
+}
+
+.work-item h4, .project-item h4 {
+  margin: 0 0 6px 0;
+  color: var(--accent);
+}
+
+.work-item ul, .project-item ul {
+  margin: 8px 0 0 18px;
+  line-height: 1.5;
+}
