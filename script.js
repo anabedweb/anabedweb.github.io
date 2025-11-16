@@ -143,25 +143,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
-
-document.querySelectorAll(".file").forEach(item => {
-  item.addEventListener("click", () => {
-    const sectionId = item.dataset.section;
-
-    // hide all sections
-    document.querySelectorAll(".section").forEach(sec =>
-      sec.classList.remove("visible")
-    );
-
-    // show selected section
-    const target = document.getElementById(sectionId);
-    target.classList.add("visible");
-
-    // 🔥 Patch: re-render LinkedIn badge when opened
-    if (sectionId === "linkedin") {
-      if (window.LI && window.LI.parse) {
-        window.LI.parse();
-      }
-    }
-  });
-});
